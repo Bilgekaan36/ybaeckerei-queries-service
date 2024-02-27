@@ -29,19 +29,20 @@ import { QueueEvents } from 'bullmq';
 
   await store.initialize();
 
-  const queueEvents = new QueueEvents('eventqueue', {
+  const queueEvents = new QueueEvents('eventQueue', {
     connection: redisConnection,
   });
 
-  queueEvents.on('completed', ({ jobId: string }) => {
+  queueEvents.on('completed', ({ jobId }: { jobId: string }) => {
     // Called every time a job is completed in any worker.
-    console.log('completed', string);
+    console.log('completed', jobId);
   });
 
   queueEvents.on(
     'progress',
     ({ jobId, data }: { jobId: string; data: number | object }) => {
       // jobId received a progress event
+      console.log('progress', jobId);
     }
   );
 
