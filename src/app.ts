@@ -22,7 +22,7 @@ import { QueueEvents } from 'bullmq';
   const store = new PostgresqlDbStore({
     user: 'postgres',
     host: 'localhost',
-    database: 'yilmazbakerydb',
+    database: 'eventsourcingdb',
     password: 'secret',
     port: 5432,
   });

@@ -1,14 +1,9 @@
 import { dbMigrationQueries } from '../utils/databaseQueries';
 import { Pool } from 'pg';
 import { listingMethods } from '../methods/mixins/listingMethods';
-import { registrationMethods } from '../methods/mixins/registrationMethods';
-import { editMethods } from '../methods/mixins/editMethods';
-import { removeMethods } from '../methods/mixins/removeMethods';
 import { ICheckoutOrder, IPayOrder } from 'lib/types/api';
 
-const mixinMethods = registrationMethods(
-  listingMethods(editMethods(removeMethods(class {})))
-);
+const mixinMethods = listingMethods(class {});
 
 export class PostgresqlDbStore extends mixinMethods {
   pool: any;
