@@ -21,7 +21,7 @@ export const getApi = ({ store }: { store: any }) => {
 
   // Queries API
   api.get('/listing/stores?:storeId', getStores({ store }));
-  api.get('/listing/categories', getCategories({ store }));
+  api.get('/listing/categories?:categoryId', getCategories({ store }));
   api.get('/listing/billboards?:billboardId', getBillboards({ store }));
   api.get('/listing/variants', getVariants({ store }));
   api.get('/listing/images', getImages({ store }));

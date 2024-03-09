@@ -50,13 +50,17 @@ export function listingMethods<T extends Constructor>(
       return result.rows;
     }
 
-    async getCategories() {
+    async getCategories({ categoryId }: { categoryId: number }) {
       const query = `
             SELECT *
-            FROM "Category";
+            FROM "Category"
+            ${categoryId ? 'WHERE "categoryId" = $1' : ''};
             `;
 
-      const result = await this.pool.query(query);
+      const result = await this.pool.query(
+        query,
+        categoryId ? [categoryId] : []
+      );
       return result.rows;
     }
 
