@@ -24,9 +24,9 @@ export const getApi = ({ store }: { store: any }) => {
   api.get('/listing/categories?:categoryId', getCategories({ store }));
   api.get('/listing/billboards?:billboardId', getBillboards({ store }));
   api.get('/listing/variants', getVariants({ store }));
-  api.get('/listing/images', getImages({ store }));
+  api.get('/listing/images?:imageId', getImages({ store }));
   api.get('/listing/products', getProducts({ store }));
-  api.get('/listing/sizes', getSizes({ store }));
+  api.get('/listing/sizes?:sizeId', getSizes({ store }));
   api.get('/listing/customers', getCustomers({ store }));
   api.get('/listing/orderStatus', getOrderStatus({ store }));
   api.get('/listing/orderItems?:orderId', getOrderItems({ store }));

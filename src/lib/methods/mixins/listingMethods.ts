@@ -73,12 +73,13 @@ export function listingMethods<T extends Constructor>(
       return result.rows;
     }
 
-    async getSizes() {
+    async getSizes({ sizeId }: { sizeId: number }) {
       const query = `
             SELECT *
-            FROM "Size";
+            FROM "Size"
+            ${sizeId ? 'WHERE "sizeId" = $1' : ''};
             `;
-      const result = await this.pool.query(query);
+      const result = await this.pool.query(query, sizeId ? [sizeId] : []);
       return result.rows;
     }
 
